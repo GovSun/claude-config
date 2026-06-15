@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh repo *)",
+      "Read(//Users/izabirov/.agents/skills/**)",
+      "Bash(git clone *)",
+      "mcp__pencil"
+    ]
+  },
+  "model": "opus[1m]",
+  "enabledPlugins": {
+    "figma@claude-plugins-official": true
+  },
+  "syntaxHighlightingDisabled": false,
+  "switchModelsOnFlag": false
+}

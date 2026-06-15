@@ -1,0 +1,20 @@
+# Системный мусор
+.DS_Store
+Thumbs.db
+*.swp
+
+# НИКОГДА не коммитить целиком — содержит userID, OAuth и личные данные
+.claude.json
+**/.claude.json
+
+# Локальные/секретные настройки
+settings.local.json
+*.local.json
+.env
+*.key
+*.pem
+
+# Кэши плагинов и прочее, что не нужно переносить
+plugins-config/cache/
+plugins-config/install-counts-cache.json
+node_modules/

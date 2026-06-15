@@ -1,0 +1,37 @@
+{
+  "_comment": "Шаблон MCP-серверов для Claude Code. НЕ копировать вслепую — pencil и blender используют пути конкретной машины. Скопируй блок mcpServers в ~/.claude.json (macOS/Linux) или %USERPROFILE%\\.claude.json (Windows) и поправь пути под свою ОС. Скрипт install автоматически вставит сюда только КРОССПЛАТФОРМЕННЫЕ серверы (playwright, higgsfield).",
+
+  "mcpServers": {
+    "playwright": {
+      "_note": "Кроссплатформенный. Работает как есть везде, где есть Node.js/npx.",
+      "type": "stdio",
+      "command": "npx",
+      "args": ["@playwright/mcp@latest"],
+      "env": {}
+    },
+
+    "higgsfield": {
+      "_note": "Кроссплатформенный (просто HTTP-эндпоинт). Работает везде. Может потребоваться авторизация внутри Claude Code.",
+      "type": "http",
+      "url": "https://mcp.higgsfield.ai/mcp"
+    },
+
+    "pencil": {
+      "_note_macos": "На macOS путь: /Applications/Pencil.app/Contents/Resources/app.asar.unpacked/out/mcp-server-darwin-arm64",
+      "_note_windows": "На Windows установи приложение Pencil и найди его mcp-server-win-*.exe внутри папки установки (обычно %LOCALAPPDATA%\\Programs\\Pencil\\ ... \\out\\). Подставь полный путь в command.",
+      "type": "stdio",
+      "command": "ЗАМЕНИ_ПУТЬ_К_PENCIL_MCP_SERVER",
+      "args": ["--app", "desktop", "--agent", "claudeCodeCLI"],
+      "env": {}
+    },
+
+    "blender": {
+      "_note_macos": "На macOS запускается через uvx: /Users/<USER>/.local/bin/uvx с аргументом blender-mcp",
+      "_note_windows": "На Windows установи uv (https://docs.astral.sh/uv/), затем command просто 'uvx' (если в PATH) либо полный путь к uvx.exe. Аргумент тот же: blender-mcp.",
+      "type": "stdio",
+      "command": "uvx",
+      "args": ["blender-mcp"],
+      "env": {}
+    }
+  }
+}
