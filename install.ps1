@@ -14,8 +14,18 @@ $skillsDst = Join-Path $claudeDir "skills"
 if (Test-Path $skillsSrc) {
     New-Item -ItemType Directory -Force -Path $skillsDst | Out-Null
     Copy-Item -Path (Join-Path $skillsSrc "*") -Destination $skillsDst -Recurse -Force
-    $count = (Get-ChildItem $skillsDst -Directory).Count
+    $count = (Get-ChildItem $skillsSrc -Directory).Count
     Write-Host "    [OK] Скопировано скиллов: $count" -ForegroundColor Green
+}
+
+# --- 1b. Агенты ---
+$agentsSrc = Join-Path $repo "agents"
+$agentsDst = Join-Path $claudeDir "agents"
+if (Test-Path $agentsSrc) {
+    New-Item -ItemType Directory -Force -Path $agentsDst | Out-Null
+    Copy-Item -Path (Join-Path $agentsSrc "*") -Destination $agentsDst -Recurse -Force
+    $count = (Get-ChildItem $agentsSrc -Filter *.md).Count
+    Write-Host "    [OK] Скопировано агентов: $count" -ForegroundColor Green
 }
 
 # --- 2. settings.json ---

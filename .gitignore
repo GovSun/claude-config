@@ -18,3 +18,10 @@ settings.local.json
 plugins-config/cache/
 plugins-config/install-counts-cache.json
 node_modules/
+
+# Скиллы Anthropic с claude.ai (подтягиваются сами после входа, в путях ID аккаунта) и корзина
+skills/synced/
+skills/.trash/
+
+# Движок impeccable (17 МБ, только macOS arm64) — скилл скачивает его сам
+skills/impeccable/scripts/bin/

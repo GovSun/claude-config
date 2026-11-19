@@ -13,7 +13,14 @@ echo "==> Разворачиваю настройки Claude Code в $CLAUDE_DIR
 if [ -d "$REPO/skills" ]; then
   mkdir -p "$CLAUDE_DIR/skills"
   cp -R "$REPO/skills/." "$CLAUDE_DIR/skills/"
-  echo "    [OK] Скопировано скиллов: $(find "$CLAUDE_DIR/skills" -maxdepth 1 -mindepth 1 -type d | wc -l | tr -d ' ')"
+  echo "    [OK] Скопировано скиллов: $(find "$REPO/skills" -maxdepth 1 -mindepth 1 -type d | wc -l | tr -d ' ')"
+fi
+
+# --- 1b. Агенты ---
+if [ -d "$REPO/agents" ]; then
+  mkdir -p "$CLAUDE_DIR/agents"
+  cp -R "$REPO/agents/." "$CLAUDE_DIR/agents/"
+  echo "    [OK] Скопировано агентов: $(find "$REPO/agents" -maxdepth 1 -name '*.md' | wc -l | tr -d ' ')"
 fi
 
 # --- 2. settings.json ---
